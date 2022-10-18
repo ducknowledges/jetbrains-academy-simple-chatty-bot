@@ -34,8 +34,8 @@ public class SimpleBotTest {
     }
 
     @Test
-    public void shouldAskUserName() {
-        new SimpleBot(new Bot()).askUserName();
+    public void shouldPrintAskUserName() {
+        new SimpleBot(new Bot()).printAskUserName();
         assertThat(output.toString()).isEqualTo(
                 String.format("Please, remind me your name.%n")
         );
@@ -48,6 +48,30 @@ public class SimpleBotTest {
         new SimpleBot(new Bot()).printUserName();
         assertThat(output.toString()).isEqualTo(
                 String.format("What a great name you have, %s!%n", userName)
+        );
+    }
+
+    @Test
+    public void shouldPrintOfferToGuessTheAge() {
+        new SimpleBot(new Bot()).printOfferToGuessTheAge();
+        assertThat(output.toString()).isEqualTo(
+                String.format(
+                        "Let me guess your age.%n"
+                        + "Enter remainders of dividing your age by 3, 5 and 7.%n")
+        );
+    }
+
+    @Test
+    public void shouldPrintUserAge() {
+        int userAge = 22;
+        int remainder3 = 1;
+        int remainder5 = 2;
+        int remainder7 = 1;
+        String input = String.format("%d%n %d%n %d%n", remainder3, remainder5, remainder7);
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        new SimpleBot(new Bot()).printUserAge();
+        assertThat(output.toString()).isEqualTo(
+                String.format("Your age is %d; that's a good time to start programming!%n", userAge)
         );
     }
 }

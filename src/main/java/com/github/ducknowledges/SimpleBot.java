@@ -18,21 +18,36 @@ public class SimpleBot {
 
     public void run() {
         printGreet();
-        askUserName();
+        printAskUserName();
         printUserName();
+        printOfferToGuessTheAge();
+        printUserAge();
     }
 
     public void printGreet() {
         print(bot.greet());
     }
 
-    public void askUserName() {
+    public void printAskUserName() {
         print(bot.askUserName());
     }
 
     public void printUserName() {
         Scanner scanner = new Scanner(System.in);
         print(bot.getUserName(scanner.next()));
+    }
+
+    public void printOfferToGuessTheAge() {
+        print(bot.getOfferToGuessTheAge());
+    }
+
+    public void printUserAge() {
+        Scanner scanner = new Scanner(System.in);
+        print(bot.getUserAge(
+                scanner.nextInt(),
+                scanner.nextInt(),
+                scanner.nextInt()
+        ));
     }
 
     private void print(String string) {

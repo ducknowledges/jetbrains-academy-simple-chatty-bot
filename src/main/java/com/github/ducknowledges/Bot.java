@@ -29,4 +29,18 @@ public class Bot {
     public String getUserName(String userName) {
         return String.format("What a great name you have, %s!", userName);
     }
+
+    public String getOfferToGuessTheAge() {
+        return String.format(
+                "Let me guess your age.%n"
+                        + "Enter remainders of dividing your age by 3, 5 and 7.");
+    }
+
+    public String getUserAge(int remainder3, int remainder5, int remainder7) {
+
+        String age =  String.valueOf(
+                (remainder3 * 70 + remainder5 * 21 + remainder7 * 15) % 105
+        );
+        return String.format("Your age is %s; that's a good time to start programming!", age);
+    }
 }
