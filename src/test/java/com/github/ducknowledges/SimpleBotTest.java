@@ -74,4 +74,30 @@ public class SimpleBotTest {
                 String.format("Your age is %d; that's a good time to start programming!%n", userAge)
         );
     }
+
+    @Test
+    public void shouldPrintOfferToCountNumbers() {
+        new SimpleBot(new Bot()).printOfferToCountNumbers();
+        assertThat(output.toString()).isEqualTo(
+                String.format("Now I will prove to you that I can count to any number you want.%n")
+        );
+    }
+
+    @Test
+    public void shouldPrintNumbers() {
+        int n1 = 0;
+        int n2 = 1;
+        int n3 = 2;
+        int n4 = 4;
+        String input = String.format("%d%n" + "%d%n" + "%d%n" + "%d%n", n1, n2, n3, n4);
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        new SimpleBot(new Bot()).printNumbers();
+    }
+
+    @Test void shouldSayGoodbye() {
+        new SimpleBot(new Bot()).printGoodBye();
+        assertThat(output.toString()).isEqualTo(
+                String.format("Completed, have a nice day!%n")
+        );
+    }
 }

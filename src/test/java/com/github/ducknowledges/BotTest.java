@@ -50,4 +50,22 @@ class BotTest {
         String actual = String.format("Your age is %d; that's a good time to start programming!", 22);
         assertThat(actual).isEqualTo(bot.getUserAge(remainder3, remainder5, remainder7));
     }
+
+    @Test
+    void shouldOfferToCountNumbers() {
+        String actual = "Now I will prove to you that I can count to any number you want.";
+        assertThat(actual).isEqualTo(bot.getOfferToCountNumber());
+    }
+
+    @Test
+    void shouldGetNumbers() {
+        String actual = String.format("0!%n" + "1!%n" + "2!%n" + "3!%n" + "4!");
+        assertThat(actual).isEqualTo(bot.getNumbers(4));
+    }
+
+    @Test
+    void shouldSayGoodbay() {
+        String actual = "Completed, have a nice day!";
+        assertThat(actual).isEqualTo(bot.sayGoodBye());
+    }
 }

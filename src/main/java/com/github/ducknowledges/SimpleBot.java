@@ -22,6 +22,9 @@ public class SimpleBot {
         printUserName();
         printOfferToGuessTheAge();
         printUserAge();
+        printOfferToCountNumbers();
+        printNumbers();
+        printGoodBye();
     }
 
     public void printGreet() {
@@ -48,6 +51,19 @@ public class SimpleBot {
                 scanner.nextInt(),
                 scanner.nextInt()
         ));
+    }
+
+    public void printOfferToCountNumbers() {
+        print(bot.getOfferToCountNumber());
+    }
+
+    public void printNumbers() {
+        Scanner scanner = new Scanner(System.in);
+        print(bot.getNumbers(scanner.nextInt()));
+    }
+
+    public void printGoodBye() {
+        print(bot.sayGoodBye());
     }
 
     private void print(String string) {

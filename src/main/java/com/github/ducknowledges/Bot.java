@@ -43,4 +43,21 @@ public class Bot {
         );
         return String.format("Your age is %s; that's a good time to start programming!", age);
     }
+
+    public String getOfferToCountNumber() {
+        return "Now I will prove to you that I can count to any number you want.";
+    }
+
+    public String getNumbers(int number) {
+        String result = "";
+        for (int i = 0; i < number; i++) {
+            result += String.format("%d!%n", i);
+        }
+        result += String.format("%d!", number);
+        return result;
+    }
+
+    public String sayGoodBye() {
+        return "Completed, have a nice day!";
+    }
 }
