@@ -24,7 +24,9 @@ public class SimpleBot {
         printUserAge();
         printOfferToCountNumbers();
         printNumbers();
-        printGoodBye();
+        printOfferToAskTheQuestion();
+        printMethodQuestion();
+        takeAnswer(bot.getRightAnswerToTheMethodQuestion());
     }
 
     public void printGreet() {
@@ -62,8 +64,30 @@ public class SimpleBot {
         print(bot.getNumbers(scanner.nextInt()));
     }
 
-    public void printGoodBye() {
-        print(bot.sayGoodBye());
+    public void printOfferToAskTheQuestion() {
+        print(bot.getOfferToAskTheQuestion());
+    }
+
+    public void printMethodQuestion() {
+        print(bot.askTheMethodQuestion());
+    }
+
+    public void takeAnswer(String rightAnswer) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            String answer = scanner.next();
+            if (!rightAnswer.equals(answer)) {
+                print(bot.suggestANewAttempt());
+            } else {
+                printCongratulations();
+                return;
+            }
+        }
+    }
+
+    private void printCongratulations() {
+        print(bot.sayCongratulations());
     }
 
     private void print(String string) {

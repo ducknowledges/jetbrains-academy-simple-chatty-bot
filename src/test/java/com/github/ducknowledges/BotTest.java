@@ -64,8 +64,30 @@ class BotTest {
     }
 
     @Test
-    void shouldSayGoodbay() {
-        String actual = "Completed, have a nice day!";
-        assertThat(actual).isEqualTo(bot.sayGoodBye());
+    void shouldGetOfferToAskTheQuestion() {
+        String actual = "Let's test your programming knowledge.";
+        assertThat(actual).isEqualTo(bot.getOfferToAskTheQuestion());
+    }
+
+    @Test
+    void shouldAskTheMethodQuestion() {
+        String actual = String.format("Why do we use methods?%n"
+                + "1. To repeat a statement multiple times.%n"
+                + "2. To decompose a program into several small subroutines.%n"
+                + "3. To determine the execution time of a program.%n"
+                + "4. To interrupt the execution of a program.);%n");
+        assertThat(actual).isEqualTo(bot.askTheMethodQuestion());
+    }
+
+    @Test
+    void shouldGetRightAnswerToTheMethodQuestion() {
+        String actual = "2";
+        assertThat(actual).isEqualTo(bot.getRightAnswerToTheMethodQuestion());
+    }
+
+    @Test
+    void shouldSayCongratulations() {
+        String actual = "Congratulations, have a nice day!";
+        assertThat(actual).isEqualTo(bot.sayCongratulations());
     }
 }

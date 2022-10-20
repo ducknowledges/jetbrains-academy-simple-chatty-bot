@@ -88,16 +88,51 @@ public class SimpleBotTest {
         int n1 = 0;
         int n2 = 1;
         int n3 = 2;
-        int n4 = 4;
-        String input = String.format("%d%n" + "%d%n" + "%d%n" + "%d%n", n1, n2, n3, n4);
+        int n4 = 3;
+        String input = String.format("%d%n", n4);
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         new SimpleBot(new Bot()).printNumbers();
+        assertThat(output.toString()).isEqualTo(
+                String.format("%d!%n" + "%d!%n" + "%d!%n" + "%d!%n", n1, n2, n3, n4)
+        );
     }
 
-    @Test void shouldSayGoodbye() {
-        new SimpleBot(new Bot()).printGoodBye();
+    @Test
+    void printOfferToAskTheQuestion() {
+        new SimpleBot(new Bot()).printOfferToAskTheQuestion();
         assertThat(output.toString()).isEqualTo(
-                String.format("Completed, have a nice day!%n")
+                String.format("Let's test your programming knowledge.%n")
+        );
+    }
+
+    @Test
+    void shouldPrintMethodQuestion() {
+        new SimpleBot(new Bot()).printMethodQuestion();
+        assertThat(output.toString()).isEqualTo(
+                String.format("Why do we use methods?%n"
+                        + "1. To repeat a statement multiple times.%n"
+                        + "2. To decompose a program into several small subroutines.%n"
+                        + "3. To determine the execution time of a program.%n"
+                        + "4. To interrupt the execution of a program.%n")
+        );
+    }
+
+    @Test
+    void shouldTakeRightAnswer() {
+        String input = "2";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        new SimpleBot(new Bot()).takeAnswer(input);
+        assertThat(output.toString()).isEqualTo(String.format("Congratulations, have a nice day!%n"));
+    }
+
+    @Test
+    void shouldTakeWrongAnswer() {
+        String input = "4 2";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        new SimpleBot(new Bot()).takeAnswer("2");
+        assertThat(output.toString()).isEqualTo(String.format(
+                "Please, try again.%n"
+                + "Congratulations, have a nice day!%n")
         );
     }
 }

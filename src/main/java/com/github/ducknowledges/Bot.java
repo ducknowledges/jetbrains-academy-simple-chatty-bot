@@ -57,7 +57,27 @@ public class Bot {
         return result;
     }
 
-    public String sayGoodBye() {
-        return "Completed, have a nice day!";
+    public String getOfferToAskTheQuestion() {
+        return "Let's test your programming knowledge.";
+    }
+
+    public String askTheMethodQuestion() {
+        return String.format("Why do we use methods?%n"
+            + "1. To repeat a statement multiple times.%n"
+            + "2. To decompose a program into several small subroutines.%n"
+            + "3. To determine the execution time of a program.%n"
+            + "4. To interrupt the execution of a program.");
+    }
+
+    public String getRightAnswerToTheMethodQuestion() {
+        return "2";
+    }
+
+    public String suggestANewAttempt() {
+        return "Please, try again.";
+    }
+
+    public String sayCongratulations() {
+        return "Congratulations, have a nice day!";
     }
 }
